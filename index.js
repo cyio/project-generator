@@ -2,6 +2,7 @@
 
 const inquirer = require('inquirer');
 const fs = require('fs');
+const fx = require('mkdir-recursive');
 
 const CURR_DIR = process.cwd();
 const CHOICES = fs.readdirSync(`${__dirname}/templates`);
@@ -16,9 +17,9 @@ const QUESTIONS = [
   {
     name: 'project-name',
     type: 'input',
-    message: 'Project name:',
+    message: 'Project name, suport full path',
     validate: function (input) {
-      if (/^([A-Za-z\-\_\d])+$/.test(input)) return true;
+      if (/^([A-Za-z\-\_\d\/\\])+$/.test(input)) return true;
       else return 'Project name may only include letters, numbers, underscores and hashes.';
     }
   }
@@ -30,7 +31,7 @@ inquirer.prompt(QUESTIONS)
     const projectName = answers['project-name'];
     const templatePath = `${__dirname}/templates/${projectChoice}`;
 
-    fs.mkdirSync(`${CURR_DIR}/${projectName}`);
+    fx.mkdirSync(`${CURR_DIR}/${projectName}`);
 
     createDirectoryContents(templatePath, projectName);
   });
@@ -50,7 +51,7 @@ function createDirectoryContents (templatePath, newProjectPath) {
       const writePath = `${CURR_DIR}/${newProjectPath}/${file}`;
       fs.writeFileSync(writePath, contents, 'utf8');
     } else if (stats.isDirectory()) {
-      fs.mkdirSync(`${CURR_DIR}/${newProjectPath}/${file}`);
+      fx.mkdirSync(`${CURR_DIR}/${newProjectPath}/${file}`);
 
       // recursive call
       createDirectoryContents(`${templatePath}/${file}`, `${newProjectPath}/${file}`);

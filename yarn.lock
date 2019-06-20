@@ -134,6 +134,11 @@ mimic-fn@^1.0.0:
   resolved "http://registry.npm.taobao.org/mimic-fn/download/mimic-fn-1.2.0.tgz#820c86a39334640e99516928bd03fca88057d022"
   integrity sha1-ggyGo5M0ZA6ZUWkovQP8qIBX0CI=
 
+mkdir-recursive@^0.4.0:
+  version "0.4.0"
+  resolved "https://registry.npm.taobao.org/mkdir-recursive/download/mkdir-recursive-0.4.0.tgz#7af3312e3e04987b1fba8fa873850f9e4d183cd1"
+  integrity sha1-evMxLj4EmHsfuo+oc4UPnk0YPNE=
+
 mute-stream@0.0.7:
   version "0.0.7"
   resolved "http://registry.npm.taobao.org/mute-stream/download/mute-stream-0.0.7.tgz#3075ce93bc21b8fab43e1bc4da7e8115ed1e7bab"
